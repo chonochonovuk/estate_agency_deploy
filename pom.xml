@@ -72,11 +72,11 @@
             <version>2.3.5</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
         <dependency>
-            <groupId>org.mariadb.jdbc</groupId>
-            <artifactId>mariadb-java-client</artifactId>
-            <version>2.5.4</version>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.18</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.cloudinary/cloudinary -->
