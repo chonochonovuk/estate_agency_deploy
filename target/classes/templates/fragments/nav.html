@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <th:block>
+        <div class="container">
+            <a class="navbar-brand" href="/">RealEstate</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a th:href="@{/users/profile}" class="nav-link" th:text="${#authentication.getName()}">User</a></li>
+                    <li sec:authorize="hasRole('ROLE_ADMIN')" class="nav-item active"><a class="nav-link" th:href="@{/admin/manage-users}">Admin</a></li>
+                    <li sec:authorize="hasRole('ROLE_MODERATOR')" class="nav-item active"><a class="nav-link" th:href="@{/blog}">Moderator</a></li>
+                    <li sec:authorize="hasRole('ROLE_AGENT')"class="nav-item active"><a class="nav-link" th:href="@{/property-add}">Add Property</a></li>
+                    <li class="nav-item active"><a th:href="@{/property}" class="nav-link">Properties</a></li>
+                    <li class="nav-item"><a th:href="@{/blog}" class="nav-link">Blog</a></li>
+                    <li class="nav-item">
+                        <form th:action="@{/logout}" method="post">
+                            <button type="submit"
+                                    class="mt-2 btn btn-link nav-link">
+                                <h6 class="text-white">Logout</h6>
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </th:block>
+</html>

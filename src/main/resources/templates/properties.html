@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>RealEstate</title>
+    <meta charset="utf-8" th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
+      <th:block th:include="~{/fragments/head}"></th:block>
+  </head>
+  <body>
+    
+	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+		  <th:block th:include="~{/fragments/nav}"></th:block>
+	  </nav>
+    <!-- END nav -->
+    
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate pb-0 text-center">
+          	<p class="breadcrumbs"><span>Properties <i class="fa fa-chevron-right"></i></span></p>
+            <h1 class="mb-3 bread">Properties</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section ftco-no-pb ftco-no-pt">
+    	<div class="container">
+	    	<div class="row">
+					<div class="col-md-12">
+						<div class="search-wrap-1 ftco-animate p-4">
+							<form class="search-property-1" id="search-form">
+		        		<div class="row">
+		        			<div class="col-lg align-items-end">
+		        				<div class="form-group">
+		        					<label for="keyword">Keyword</label>
+		          				<div class="form-field">
+		          					<div class="icon"><span class="fa fa-search"></span></div>
+				                <input type="text" class="form-control bg-dark" placeholder="Enter Keyword" id="keyword">
+				              </div>
+			              </div>
+		        			</div>
+		        			<div class="col-lg align-items-end">
+		        				<div class="form-group">
+		        					<label for="propertyType">Property Type</label>
+		        					<div class="form-field">
+		          					<div class="select-wrap">
+		                      <div class="icon"><span class="fa fa-chevron-down"></span></div>
+		                      <select name="propertyType" id="propertyType" class="form-control bg-dark">
+								  <option class="bg-dark" th:each="o : ${allPropertyTypes}"
+										  th:text="${o.typeName}" th:value="${o.typeName}">Property type</option>
+		                      </select>
+		                    </div>
+				              </div>
+			              </div>
+		        			</div>
+		        			<div class="col-lg align-items-end">
+		        				<div class="form-group">
+		        					<label for="location">Location</label>
+		          				<div class="form-field">
+		          					<div class="icon"><span class="fa fa-search"></span></div>
+				                <input type="text" class="form-control" placeholder="Location" id="location">
+				              </div>
+			              </div>
+		        			</div>
+		        			<div class="col-lg align-items-end">
+		        				<div class="form-group">
+		        					<label for="price">Price Limit</label>
+		        					<div class="form-field">
+		          					<div class="select-wrap">
+		                      <div class="icon"><span class="fa fa-chevron-down"></span></div>
+		                      <select name="price" id="price" class="form-control">
+		                        <option class="bg-dark" value="50000">50,000</option>
+		                        <option class="bg-dark" value="100000">100,000</option>
+		                        <option class="bg-dark" value="200000">200,000</option>
+		                      </select>
+		                    </div>
+				              </div>
+			              </div>
+		        			</div>
+		        			<div class="col-lg align-self-end">
+		        				<div class="form-group">
+		        					<div class="form-field">
+				                <input type="submit" value="Search" class="form-control btn btn-primary" id="bth-search">
+				              </div>
+			              </div>
+		        			</div>
+		        		</div>
+		        	</form>
+		        </div>
+					</div>
+	    	</div>
+	    </div>
+    </section>
+
+    <section class="ftco-section goto-here">
+    	<div class="container">
+    		<div class="row justify-content-center">
+          <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+          	<span class="subheading">What we offer</span>
+            <h2 class="mb-2">Properties</h2>
+          </div>
+        </div>
+        <div class="row" id="feedback">
+        </div>
+        <div class="row mt-5">
+          <div class="col text-center">
+            <div class="block-27">
+              <ul>
+                <li><a href="#">&lt;</a></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&gt;</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    	</div>
+    </section>
+
+      <footer class="ftco-footer ftco-section">
+          <th:block th:include="~{/fragments/footer}"></th:block>
+      </footer>
+
+	  <script th:inline="javascript">
+		  /*<![CDATA[*/
+		  let _csrf_token = /*[[${_csrf.token}]]*/ '';
+		  let _csrf_param_name = /*[[${_csrf.parameterName}]]*/ '';
+		  /*]]>*/
+	  </script>
+      <th:block th:include="~{/fragments/bodyScript}"></th:block>
+	  <script th:src="@{/js/search.js}"></script>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>RealEstate</title>
+    <meta charset="utf-8">
+    <th:block th:include="~{/fragments/head}"></th:block>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <th:block th:include="~{/fragments/nav}"></th:block>
+</nav>
+<section class="hero-wrap hero-wrap-2" style="background-image: url('/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate pb-0 text-center">
+                <p class="breadcrumbs"><span>Manage Users<i class="fa fa-chevron-right"></i></span></p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ftco-section goto-here">
+    <!--    <div class="container">-->
+    <div class="row no-gutters slider-text align-items-center">
+    <table class="table-bordered mx-auto bg-light">
+        <thead>
+        <tr>
+            <th scope="col" class="col-md-2">Username</th>
+            <th scope="col" class="col-md-2">First Name</th>
+            <th scope="col" class="col-md-2">Last Name</th>
+            <th scope="col" class="col-md-2">Status</th>
+            <th scope="col" class="col-md-2">Change Status</th>
+            <th scope="col" class="col-md-2">Role</th>
+            <th scope="col" class="col-md-2">Set Role</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${allUsers}">
+            <td th:text="${user.username}" class="col-md-2">Username</td>
+            <td th:text="${user.firstName}" class="col-md-2">First Name</td>
+            <td th:text="${user.lastName}" class="col-md-2">Last Name</td>
+            <td th:text="${user.enabled} ? 'Enabled' : 'Disabled'" class="col-md-2">Status</td>
+            <td class="col-md-2"><div class="row">
+                <th:block th:if="${user.enabled}">
+                    <form th:action="@{/admin/change-status-disabled/{username}(username=${user.username})}" method="POST">
+                        <button class="btn btn-success">DISABLED</button>
+                    </form>
+                </th:block>
+                <th:block th:unless="${user.enabled}">
+                    <form th:action="@{/admin/change-status-enabled/{username}(username=${user.username})}" method="POST">
+                        <button class="btn btn-success">ENABLED</button>
+                    </form>
+                </th:block>
+            </div>
+            </td>
+            <td th:text="${#strings.setJoin(user.authorities,' ')}" class="col-md-2">Roles</td>
+            <td class="col-md-2"><div class="row">
+              <th:block th:if="${!#strings.contains(user.authorities,'ROLE_USER')}">
+                  <form th:action="@{/admin/set-role-user/{username}(username=${user.username})}" method="POST">
+                      <button class="btn btn-success">USER</button>
+                  </form>
+              </th:block>
+                <th:block th:if="${!#strings.contains(user.authorities,'ROLE_ADMIN')}">
+                    <form th:action="@{/admin/set-role-admin/{username}(username=${user.username})}" method="POST">
+                        <button class="btn btn-success">ADMIN</button>
+                    </form>
+                </th:block>
+                <th:block th:if="${!#strings.contains(user.authorities,'ROLE_MODERATOR')}">
+                    <form th:action="@{/admin/set-role-moderator/{username}(username=${user.username})}" method="POST">
+                        <button class="btn btn-success">MODERATOR</button>
+                    </form>
+                </th:block>
+                <th:block th:if="${!#strings.contains(user.authorities,'ROLE_AGENT')}">
+                    <form th:action="@{/admin/set-role-agent/{username}(username=${user.username})}" method="POST">
+                        <button class="btn btn-success">AGENT</button>
+                    </form>
+                </th:block>
+                <th:block th:if="${!#strings.contains(user.authorities,'ROLE_OWNER')}">
+                    <form th:action="@{/admin/set-role-agent/{username}(username=${user.username})}" method="POST">
+                        <button class="btn btn-success">OWNER</button>
+                    </form>
+                </th:block>
+            </div> </td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</section>
+
+<th:block th:include="~{/fragments/bodyScript}"></th:block>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>RealEstate</title>
+    <meta charset="utf-8">
+    <th:block th:include="~{/fragments/head}"></th:block>
+</head>
+  <body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <th:block th:include="~{/fragments/nav}"></th:block>
+  </nav>
+  <!-- END nav -->
+    
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate pb-0 text-center">
+          	<p class="breadcrumbs"><span class="mr-2">Blog <i class="fa fa-chevron-right"></i></span></p>
+            <h1 class="mb-3 bread">Blog</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+  <section class="ftco-section ftco-no-pb ftco-no-pt">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="search-wrap-1 ftco-animate p-4">
+                <div class="col-lg align-self-end">
+                  <div class="form-group">
+                    <div class="form-field">
+                      <a th:href="@{/blog-add}" type="submit"  class="form-control btn btn-primary">+ Add Blog </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+  <section class="ftco-section">
+      <div class="container">
+        <div class="row d-flex">
+          <th:block sec:authorize="hasRole('ROLE_MODERATOR')">
+          <div class="col-md-3 d-flex ftco-animate" th:each="blog : ${allBlogs}">
+          	<div class="blog-entry justify-content-end">
+              <div class="text">
+                <a th:href="@{/blog/details/{title}(title=${blog.title})}" class="block-20 img" style="background-image: url('/images/image_1.jpg');">
+	              </a>
+	              <div class="meta mb-3">
+                  <div><a th:href="@{/blog/details/{title}(title=${blog.title})}" th:text="${#temporals.format(blog.createdAt,'dd-MM-yyyy')}">June 01, 2020</a></div>
+                  <div th:if="${blog.archived}"><p>Archived</p></div>
+                    <div th:if="${blog.archived}">
+                      <form th:action="@{/moderator/blog-status-unarchived/{title}(title=${blog.title})}" method="POST">
+                        <button class="btn btn-success">Activate</button>
+                      </form>
+                    </div>
+                  <div th:unless="${blog.archived}"><p>Active</p></div>
+                  <div th:unless="${blog.archived}" >
+                    <form th:action="@{/moderator/blog-status-archived/{title}(title=${blog.title})}" method="POST">
+                      <button class="btn btn-danger">Archivate</button>
+                    </form>
+                  </div>
+                </div>
+                  <p>Author : <a th:href="@{/blog/details/{title}(title=${blog.title})}" th:text="| ${blog.author.firstName} ${blog.author.lastName} |">John Doe</a></p>
+	              <h3 class="heading"><a th:href="@{/blog/details/{title}(title=${blog.title})}" th:text="${blog.title}">Why Lead Generation is Key for Business Growth</a></h3>
+              </div>
+            </div>
+          </div>
+          </th:block>
+            <th:block sec:authorize="!hasRole('ROLE_MODERATOR')">
+              <div class="col-md-3 d-flex ftco-animate" th:each="blog : ${allBlogs}" th:unless="${blog.archived}">
+              <div class="blog-entry justify-content-end">
+                <div class="text">
+                  <a th:href="@{/blog/details/{title}(title=${blog.title})}" class="block-20 img" style="background-image: url('/images/image_1.jpg');">
+                  </a>
+                  <div class="meta mb-3">
+                    <div><a th:href="@{/blog/details/{title}(title=${blog.title})}" th:text="${#temporals.format(blog.createdAt,'dd-MM-yyyy')}">June 01, 2020</a></div>
+                    <div th:if="${blog.archived}"><p>Archived</p></div>
+                      <div th:unless="${blog.archived}"><p>Active</p></div>
+                     <div><a th:href="@{/blog/details/{title}(title=${blog.title})}" class="meta-chat" th:text="${blog.getComments().size()}"><span class="fa fa-comment"></span> 3</a></div>
+                      </div>
+                      <p>Author : <a th:href="@{/blog/details/{title}(title=${blog.title})}" th:text="| ${blog.author.firstName} ${blog.author.lastName} |">John Doe</a></p>
+                      <h3 class="heading"><a th:href="@{/blog/details/{title}(title=${blog.title})}" th:text="${blog.title}">Why Lead Generation is Key for Business Growth</a></h3>
+                    </div>
+                  </div>
+                </div>
+            </th:block>
+      </div>
+      </div>
+    </section>
+
+  <footer class="ftco-footer ftco-section">
+      <th:block th:include="~{/fragments/footer}"></th:block>
+  </footer>
+
+  <th:block th:include="~{/fragments/bodyScript}"></th:block>
+  </body>
+</html>

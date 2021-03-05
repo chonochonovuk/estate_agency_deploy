@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="~{/fragments/head}"></th:block>
+    <title>RealEstate</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <th:block th:include="~{/fragments/guest-nav}"></th:block>
+</nav>
+
+ <section class="hero-wrap" style="background-image: url('/images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+<!--    <div class="container">-->
+        <div class="row no-gutters slider-text align-items-center">
+            <form class="mx-auto w-30 bg-light p-3 rounded" th:object="${userRegisterBindingModel}" th:action="@{/users/register}" method="POST" >
+                <div class="col-sm">
+                    <div class="label-holder d-flex justify-content-center">
+                        <label for="username" class="h5 mb-1">Username</label>
+                    </div>
+                    <input th:field="*{username}" th:errorclass="bg-danger" type="text" class="form-control" id="username" name="username" />
+
+                    <small class="text-danger" th:each="er : ${#fields.errors('username')}" th:text="${er}">Username error message</small>
+                </div>
+                <div class="row mx-auto">
+                <div class="col-sm">
+                    <div class="label-holder d-flex justify-content-center">
+                        <label  for="password" class="h5 mb-1" >Password</label>
+                    </div>
+                    <input th:field="*{password}" th:errorclass="bg-danger" type="password" class="form-control" id="password" name="password" />
+                    <small class="text-danger" th:each="er : ${#fields.errors('password')}" th:text="${er}">Password error message</small>
+                </div>
+                <div class="col-sm">
+                    <div class="label-holder d-flex justify-content-center">
+                        <label for="confirmPassword" class="h5 mb-1">Confirm Password</label>
+                    </div>
+                    <input type="password" class="form-control" id="confirmPassword"
+                           name="confirmPassword" />
+                </div>
+                </div>
+                <div class="col-sm">
+                    <div class="label-holder d-flex justify-content-center">
+                        <label for="phoneNumber" class="h5 mb-1">Phone Number</label>
+                    </div>
+                    <input th:field="*{phoneNumber}" th:errorclass="bg-danger" type="tel" class="form-control" id="phoneNumber" name="phoneNumber" />
+
+                    <small class="text-danger" th:each="er : ${#fields.errors('phoneNumber')}" th:text="${er}">error message</small>
+                </div>
+                <div class="row mx-auto">
+                    <div class="col-sm ">
+                        <div class="label-holder d-flex justify-content-center">
+                            <label for="firstname" class="h5 mb-1">First Name</label>
+                        </div>
+                        <input th:field="*{firstName}" type="text" class="form-control" id="firstname"
+                               name="firstName" />
+                        <small class="text-danger" th:each="er : ${#fields.errors('firstName')}" th:text="${er}">error message</small>
+                    </div>
+                    <div class="col-sm">
+                        <div class="label-holder d-flex justify-content-center">
+                            <label for="lastName" class="h5 mb-1">Last Name</label>
+                        </div>
+                        <input th:field="*{lastName}" type="text" class="form-control" id="lastName"
+                               name="confirmPassword" />
+                        <small class="text-danger" th:each="er : ${#fields.errors('lastName')}" th:text="${er}">error message</small>
+                    </div>
+                </div>
+               
+                <br />
+                <div class="button-holder d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success  btn-block" value="Register">Register</button>
+                </div>
+
+            </form>
+        </div>
+<!--    </div>-->
+</section>
+
+<!--<footer class="ftco-footer ftco-section">-->
+<!--    <th:block th:include="~{/fragments/guest-footer}"></th:block>-->
+<!--</footer>-->
+
+
+
+<th:block th:include="~{/fragments/bodyScript}"></th:block>
+
+</body>
+</html>
