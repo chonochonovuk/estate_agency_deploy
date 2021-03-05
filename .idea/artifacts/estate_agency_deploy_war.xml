@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="estate-agency-0.0.1-SNAPSHOT.war">
+    <root id="archive" name="estate_agency_deploy-0.0.1-SNAPSHOT.war">
       <element id="artifact" artifact-name="estate_agency_deploy:war exploded" />
     </root>
   </artifact>

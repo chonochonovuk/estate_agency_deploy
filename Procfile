@@ -1,1 +1,1 @@
-web: java -jar target/estate-1.1.jar
+web: java -war target/estate_agency_deploy.war

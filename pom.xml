@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ecoverde</groupId>
-    <artifactId>estate-agency</artifactId>
+    <artifactId>estate_agency_deploy</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>estate-agency</name>
+    <name>estate_agency_deploy</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
