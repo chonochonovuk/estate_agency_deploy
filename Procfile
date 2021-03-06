@@ -1,1 +1,1 @@
-web: java -war target/estate_agency_deploy.war
+web: java -jar target/estate_agency_deploy.jar

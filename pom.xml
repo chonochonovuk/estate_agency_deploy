@@ -11,7 +11,7 @@
     <groupId>com.ecoverde</groupId>
     <artifactId>estate_agency_deploy</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>estate_agency_deploy</name>
     <description>Demo project for Spring Boot</description>
 
@@ -72,11 +72,11 @@
             <version>2.3.5</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+        <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.2.18</version>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>2.5.4</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.cloudinary/cloudinary -->
