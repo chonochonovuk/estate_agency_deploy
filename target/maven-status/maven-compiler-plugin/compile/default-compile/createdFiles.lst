@@ -57,7 +57,6 @@ com/ecoverde/estateagency/web/BlogAddController.class
 com/ecoverde/estateagency/service/AddressService.class
 com/ecoverde/estateagency/model/entity/Property.class
 com/ecoverde/estateagency/web/PropertyController.class
-com/ecoverde/estateagency/ServletInitializer.class
 com/ecoverde/estateagency/repositories/PropertyTypeRepository.class
 com/ecoverde/estateagency/web/SearchController.class
 com/ecoverde/estateagency/model/service/UserServiceModel.class
