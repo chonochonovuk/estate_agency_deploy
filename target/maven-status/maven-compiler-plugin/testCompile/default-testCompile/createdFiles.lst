@@ -1,0 +1,13 @@
+com/ecoverde/estateagency/web/UserControllerTest.class
+com/ecoverde/estateagency/web/ScheduledServiceTesting.class
+com/ecoverde/estateagency/web/UserServiceTest.class
+com/ecoverde/estateagency/web/AgentControllerTest.class
+com/ecoverde/estateagency/web/PropertyServiceTest.class
+com/ecoverde/estateagency/EstateAgencyApplicationTests.class
+com/ecoverde/estateagency/web/SearchControllerTest.class
+com/ecoverde/estateagency/web/AdminControllerTest.class
+com/ecoverde/estateagency/web/BlogControllerTest.class
+com/ecoverde/estateagency/web/HomeControllerTest.class
+com/ecoverde/estateagency/web/RoleServiceTest.class
+com/ecoverde/estateagency/web/PropertyControllerTest.class
+com/ecoverde/estateagency/web/BlogServiceTest.class
