@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="@localhost" uuid="0537c499-7b7a-465a-ba28-6089f49e6307">
+    <data-source source="LOCAL" name="d132038ooct94e@ec2-54-198-252-9.compute-1.amazonaws.com" uuid="6f09af4d-4279-42fb-9c0c-5a13c9236db4">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/</jdbc-url>
+      <jdbc-url>jdbc:postgresql://ec2-54-198-252-9.compute-1.amazonaws.com:5432/d132038ooct94e</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
+      <driver-properties>
+        <property name="ssl" value="true" />
+        <property name="sslmode" value="verify-ca" />
+        <property name="sslfactory" value="org.postgresql.ssl.NonValidatingFactory" />
+      </driver-properties>
     </data-source>
   </component>
 </project>
