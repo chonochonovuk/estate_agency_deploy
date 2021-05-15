@@ -4,12 +4,12 @@
   <head>
 	  <title>RealEstate</title>
 	  <meta charset="utf-8" th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
-	  <th:block th:include="~{/fragments/head}"></th:block>
+	  <th:block th:include="~{fragments/head}"></th:block>
   </head>
   <body>
     
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-		  <th:block th:include="~{/fragments/nav}"></th:block>
+		  <th:block th:include="~{fragments/nav}"></th:block>
 	  </nav>
     <!-- END nav -->
     
@@ -114,7 +114,7 @@
     </section>
 
 	  <footer class="ftco-footer ftco-section">
-		  <th:block th:include="~{/fragments/footer}"></th:block>
+		  <th:block th:include="~{fragments/footer}"></th:block>
 	  </footer>
 
 	  <script th:inline="javascript">
@@ -123,7 +123,7 @@
 		  let _csrf_param_name = /*[[${_csrf.parameterName}]]*/ '';
 		  /*]]>*/
 	  </script>
-	  <th:block th:include="~{/fragments/bodyScript}"></th:block>
+	  <th:block th:include="~{fragments/bodyScript}"></th:block>
 	  <script th:src="@{/js/search.js}"></script>
   </body>
 </html>
